@@ -26,7 +26,8 @@ namespace QuizShow
             QuestionNo++;
             PbCorrect.Visible = false;
             PbWrong.Visible = false;
-
+            btn_A.Enabled = true; btn_B.Enabled= true; btn_C.Enabled = true; btn_D.Enabled = true;
+            btn_Next.Enabled = false;
             switch (QuestionNo)
             {
                 case 1:
@@ -73,11 +74,17 @@ namespace QuizShow
                     label1.Text = "32";
                     break;
                 default:
+                    btn_Next.Text = "Result";
                     DialogResult dialogResult;
-                    dialogResult = MessageBox.Show("Are You Sure You Want To Quit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    dialogResult = MessageBox.Show("Correct: " + CorrectNo.ToString() + "\n" + "Wrong: " + WrongNo.ToString() + "\n" + "Do you want to quit?", "Result", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dialogResult == DialogResult.No)
                     {
-                        //MessageBox.Show("");// hiçbir işlem yaptırmıyorum
+                        QuestionNo = 0 ;
+                        LblQuestion.Text = "Question:"  + "";
+                        Rtb_QuestionDs.Text = "";
+                        LblQuestion.Text = "";
+                        LblCorrect.Text = "";
+                        LblWrong.Text = "";
                     }
                     if (dialogResult == DialogResult.Yes)
                     {
@@ -86,25 +93,25 @@ namespace QuizShow
                     }
                     break;
             }
-
             LblQuestion.Text = "Question: " + QuestionNo.ToString();
-            LblCorrect.Text = "Correct: " + CorrectNo.ToString();
-            LblWrong.Text = "Wrong: " + WrongNo.ToString();
         }
 
         private void btn_A_Click(object sender, EventArgs e)
         {
-            //btn_B.Enabled=false; btn_C.Enabled = false; btn_D.Enabled = false;
+            btn_A.Enabled = false; btn_B.Enabled = false; btn_C.Enabled = false; btn_D.Enabled = false;
+            btn_Next.Enabled = true;
             label2.Text = btn_A.Text;
             if (label1.Text == label2.Text)
             {
                 CorrectNo++;
                 PbCorrect.Visible = true;
                 PbWrong.Visible = false;
+                LblCorrect.Text = "Correct: " + CorrectNo.ToString();
             }
             else
             {
                 WrongNo++;
+                LblWrong.Text = "Wrong: " + WrongNo.ToString();
                 PbCorrect.Visible = false;
                 PbWrong.Visible = true;
             }
@@ -112,15 +119,19 @@ namespace QuizShow
 
         private void btn_B_Click(object sender, EventArgs e)
         {
+            btn_A.Enabled = false; btn_B.Enabled = false; btn_C.Enabled = false; btn_D.Enabled = false;
+            btn_Next.Enabled = true;
             if (QuestionNo == 5)
             {
                 CorrectNo++;
                 PbCorrect.Visible = true;
                 PbWrong.Visible = false;
+                LblCorrect.Text = "Correct: " + CorrectNo.ToString();
             }
             else
             {
                 WrongNo++;
+                LblWrong.Text = "Wrong: " + WrongNo.ToString();
                 PbCorrect.Visible = false;
                 PbWrong.Visible = true;
             }
@@ -128,15 +139,19 @@ namespace QuizShow
 
         private void btn_C_Click(object sender, EventArgs e)
         {
+            btn_A.Enabled = false; btn_B.Enabled = false; btn_C.Enabled = false; btn_D.Enabled = false;
+            btn_Next.Enabled = true;
             if (QuestionNo == 2 || QuestionNo == 4)
             {
                 CorrectNo++;
                 PbCorrect.Visible = true;
                 PbWrong.Visible = false;
+                LblCorrect.Text = "Correct: " + CorrectNo.ToString();
             }
             else
             {
                 WrongNo++;
+                LblWrong.Text = "Wrong: " + WrongNo.ToString();
                 PbCorrect.Visible = false;
                 PbWrong.Visible = true;
             }
@@ -144,15 +159,19 @@ namespace QuizShow
 
         private void btn_D_Click(object sender, EventArgs e)
         {
+            btn_A.Enabled = false; btn_B.Enabled = false; btn_C.Enabled = false; btn_D.Enabled = false;
+            btn_Next.Enabled = true;
             if (QuestionNo == 1)
             {
                 CorrectNo++;
                 PbCorrect.Visible = true;
                 PbWrong.Visible = false;
+                LblCorrect.Text = "Correct: " + CorrectNo.ToString();
             }
             else
             {
                 WrongNo++;
+                LblWrong.Text = "Wrong: " + WrongNo.ToString();
                 PbCorrect.Visible = false;
                 PbWrong.Visible = true;
             }
